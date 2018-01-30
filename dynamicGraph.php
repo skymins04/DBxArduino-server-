@@ -1,6 +1,8 @@
 <?php
+$DBname = $_GET["DB"];
+
 /*DB 연결 및 테이블 데이터 로드*/
-$db_conn = mysqli_connect('localhost','','','');
+$db_conn = mysqli_connect('localhost','arduino','arduino',$DBname);
 if(mysqli_connect_errno()) die('DB 서버에 연결할 수 없습니다. '.mysqli_connect_error());
 
 $TBname = $_GET["TB"];
@@ -74,7 +76,7 @@ imageline($im,$left_margin,$title_h,$left_margin,$window_h+$title_h,$black);
 imageline($im,$left_margin,$window_h+$title_h,$im_w,$window_h+$title_h,$black);
 
 /*가로선*/
-$min_tenth = (int)($_GET["min"]/10)*10;
+$min_tenth = (int)($_GET["min"]/10)*10; 
 $min_one = (int)(($_GET["min"]-$min_tenth)/5)*5;
 $minValue = $min_tenth + $min_one;
 for($i = $window_h-5+$title_h; $i >= $_GET["unit"]*$_GET["height"]+$title_h; $i -= $_GET["unit"]*$_GET["height"]) {
@@ -90,7 +92,6 @@ for($i = 0; $i < count($datas); $i++) {
 	$newX = $left_margin + 5;
 	$newY = $window_h-5-$datas[$i][0]*$_GET["height"]+$minValue*$_GET["height"]+$title_h;
 	if($_GET["showPoint"] == 'True')imageline($im,$newX,$newY-2,$newX,$newY+2,$red);
-	//if($_GET["showValue"] == 'True')imageStringup($im,3,$newX,$newY-5,$datas[$i][0],$valuecolor[$i]);
 	imagestringup($im,3,$newX-7,$window_h+5+7.5*strlen($time[0])+$title_h,$time[0],$black);
 	$oldX = $newX;
 	$oldY = $newY;
@@ -98,7 +99,6 @@ for($i = 0; $i < count($datas); $i++) {
 		$newX += ($window_w - 10)/count($datas[$i]);
 		$newY = $window_h-5-$datas[$i][$j]*$_GET["height"]+$minValue*$_GET["height"]+$title_h;
 		if($_GET["showPoint"] == 'True')imageline($im,$newX,$newY-2,$newX,$newY+2,$red);
-		//if($_GET["showValue"] == 'True')imageStringup($im,3,$newX,$newY-5,$datas[$i][$j],$valuecolor[$i]);
 		imageline($im,$oldX,$oldY,$newX,$newY,$linecolor[$i]);
 		$oldX = $newX;
         	$oldY = $newY;
