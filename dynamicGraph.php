@@ -2,7 +2,7 @@
 $DBname = $_GET["DB"];
 
 /*DB 연결 및 테이블 데이터 로드*/
-$db_conn = mysqli_connect('localhost','arduino','arduino',$DBname);
+$db_conn = mysqli_connect('localhost','','',$DBname);
 if(mysqli_connect_errno()) die('DB 서버에 연결할 수 없습니다. '.mysqli_connect_error());
 
 $TBname = $_GET["TB"];
