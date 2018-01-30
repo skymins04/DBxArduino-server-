@@ -50,7 +50,7 @@ function dbConnection(){
     $servername = "localhost";
     $username = "arduino";
     $password = "arduino";
-    $dbname = "arduino";
+    $dbname = $_GET["DB"];
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     return $conn;
