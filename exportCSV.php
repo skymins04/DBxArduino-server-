@@ -48,8 +48,8 @@ function exportMysqlToCsv($filename,$tablename)
 // db connection function
 function dbConnection(){
     $servername = "localhost";
-    $username = "arduino";
-    $password = "arduino";
+    $username = "";
+    $password = "";
     $dbname = $_GET["DB"];
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
