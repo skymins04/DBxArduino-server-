@@ -4,7 +4,7 @@ if($_GET["list"] == "TB") {
 	$DBname = $_GET["DB"];
 	if($DBname == NULL) die('DB 명을 입력하세요');
 
-	$db_conn = mysqli_connect('localhost','arduino','arduino',$DBname);
+	$db_conn = mysqli_connect('localhost','','',$DBname);
 	if(mysqli_connect_errno()) die('DB 서버에 연결할 수 없습니다. '.mysqli_connect_error());
 
 	$q = mysqli_query($db_conn,'show tables');
